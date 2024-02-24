@@ -93,9 +93,6 @@ public final class EzHomes extends JavaPlugin {
         commandSetHome = new CommandSetHome(this);
         commandDeleteHome = new CommandDeleteHome(this);
         commandHomes = new CommandHomes(this);
-        commandWhere = new CommandWhere(this);
-        commandUpdateHome = new CommandUpdateHome(this);
-        commandHomeRespawn = new CommandHomeRespawn(this);
         playerLeave = new PlayerLeave(this);
         playerRespawn = new PlayerRespawn(this);
         playerTeleport = new PlayerTeleport(this);
@@ -119,11 +116,8 @@ public final class EzHomes extends JavaPlugin {
         this.getCommand("sethome").setExecutor(commandSetHome);
         this.getCommand("home").setExecutor(commandHome);
         this.getCommand("homes").setExecutor(commandHomes);
-        this.getCommand("updatehome").setExecutor(commandUpdateHome);
         this.getCommand("delhome").setExecutor(commandDeleteHome);
         this.getCommand("zahomes").setExecutor(commandEzHomes);
-        this.getCommand("where").setExecutor(commandWhere);
-        this.getCommand("respawnhome").setExecutor(commandHomeRespawn);
 
         Bukkit.getPluginManager().registerEvents(inventoryClick, this);
         Bukkit.getPluginManager().registerEvents(playerLeave, this);
@@ -136,7 +130,6 @@ public final class EzHomes extends JavaPlugin {
 
         new Metrics(this, 9390);
 
-        Bukkit.getScheduler().runTaskAsynchronously(this, this::checkForUpdates);
     }
 
     public void loadConfig() {

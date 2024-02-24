@@ -21,6 +21,7 @@ commands:
     teleport-cooldown: "<red>You must wait %seconds% seconds to teleport.</red>"
     teleporting-in: "<green>Teleporting in %seconds%!</green>"
     invalid-syntax: "<red>Invalid command usage. Usage: /home <home> to teleport to a home.</red>"
+    out-of-range: "<red>You are out of range to use this command.</red>"
   respawnhome:
     feature-not-enabled: "<red>This feature is not enabled.</red>"
     respawnhome-removed: "<green>Respawn home has been removed.</green>"
@@ -39,6 +40,7 @@ commands:
     new-home: "<green>New home set.</green>"
     home-limit: "<red>You can only have a maximum of %homes%+ homes.</red>"
     invalid-syntax: "<red>Invalid command usage. Usage: /sethome <home> to set a new home.</red>"
+    out-of-range: "<red>You are out of range to use this command.</red>"
   updatehome:
     updated-home: "<green>Updated home location.</green>"
     invalid-syntax: "<red>Invalid command usage. Usage: /updatehome <home> to update a home's location.</red>"

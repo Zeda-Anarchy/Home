@@ -18,7 +18,7 @@ commands:
   delhome:
     usage: /delhome <home>
     permission: zahomes.delhome
-  zdhomes:
+  zahomes:
     usage: /zahomes
     permission: zahomes.command
 permissions:

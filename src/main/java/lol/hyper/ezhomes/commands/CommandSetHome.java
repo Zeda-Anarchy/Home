@@ -61,7 +61,7 @@ public class CommandSetHome implements CommandExecutor {
             int range = ezHomes.config.getInt("blocks-out-of-spawn-to-use.range");
             int playerX = player.getLocation().getBlockX();
             int playerZ = player.getLocation().getBlockZ();
-            if (Math.abs(playerX) > range || Math.abs(playerZ) > range) {
+            if (!(playerX >= range || playerZ >= range)){
                 audiences.player(player).sendMessage(ezHomes.getMessage("commands.sethome.out-of-range", range));
                 return true;
             }
@@ -77,6 +77,8 @@ public class CommandSetHome implements CommandExecutor {
                 List<String> homes = homeManagement.getPlayerHomes(player.getUniqueId());
                 int homeLimit = getHomeLimit(player);
                 if (homes.size() >= homeLimit && !player.hasPermission("zahomes.bypasslimit")) {
+                    System.out.println(homeLimit);
+                    System.out.println(homes.size());
                     audiences.player(player).sendMessage(ezHomes.getMessage("commands.sethome.home-limit", homeLimit));
                     return true;
                 }

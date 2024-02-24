@@ -65,7 +65,7 @@ public class CommandHome implements TabExecutor {
             int range = ezHomes.config.getInt("blocks-out-of-spawn-to-use.range");
             int playerX = player.getLocation().getBlockX();
             int playerZ = player.getLocation().getBlockZ();
-            if (Math.abs(playerX) > range || Math.abs(playerZ) > range) {
+            if (!(playerX >= range || playerZ >= range)){
                 audiences.player(player).sendMessage(ezHomes.getMessage("commands.home.out-of-range", range));
                 return true;
             }
