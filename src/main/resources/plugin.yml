@@ -1,6 +1,6 @@
 name: ZAHome
 version: ${project.version}
-main: lol.hyper.zdhomes.ZDHomes
+main: lol.hyper.zdhomes.ZAHomes
 api-version: 1.13
 author: hyperdefined
 website: https://www.spigotmc.org/resources/ezhomes.82663/
