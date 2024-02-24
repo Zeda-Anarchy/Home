@@ -25,29 +25,29 @@ public class CommandEzHomes implements TabExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (!sender.hasPermission("ezhomes.command")) {
+        if (!sender.hasPermission("zahomes.command")) {
             audiences.sender(sender).sendMessage(ezHomes.getMessage("no-perms"));
             return true;
         }
 
         if (args.length == 0) {
-            audiences.sender(sender).sendMessage(Component.text("EzHomes version " + ezHomes.getDescription().getVersion() + ". Created by hyperdefined.").color(NamedTextColor.GREEN));
+            audiences.sender(sender).sendMessage(Component.text("zahomes version " + ezHomes.getDescription().getVersion() + ". Created by hyperdefined, modified by Zeda").color(NamedTextColor.GREEN));
             return true;
         }
         if (args.length == 1) {
             if (args[0].equalsIgnoreCase("reload")) {
-                if (sender.hasPermission("ezhomes.reload")) {
+                if (sender.hasPermission("zahomes.reload")) {
                     ezHomes.loadConfig();
                     audiences.sender(sender).sendMessage(ezHomes.getMessage("config-reloaded"));
                 } else {
                     audiences.sender(sender).sendMessage(ezHomes.getMessage("no-perms"));
                 }
             } else {
-                audiences.sender(sender).sendMessage(Component.text("EzHomes version " + ezHomes.getDescription().getVersion() + ". Created by hyperdefined.").color(NamedTextColor.GREEN));
+                audiences.sender(sender).sendMessage(Component.text("zahomes version " + ezHomes.getDescription().getVersion() + ". Created by hyperdefined, modified by Zeda").color(NamedTextColor.GREEN));
             }
             return true;
         }
-        audiences.sender(sender).sendMessage(Component.text("EzHomes version " + ezHomes.getDescription().getVersion() + ". Created by hyperdefined.").color(NamedTextColor.GREEN));
+        audiences.sender(sender).sendMessage(Component.text("zahomes version " + ezHomes.getDescription().getVersion() + ". Created by hyperdefined, modified by Zeda").color(NamedTextColor.GREEN));
         return true;
     }
 

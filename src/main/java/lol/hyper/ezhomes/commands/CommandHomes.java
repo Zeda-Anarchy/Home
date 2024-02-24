@@ -67,6 +67,9 @@ public class CommandHomes implements CommandExecutor {
             return true;
         }
 
+        int maxHomesToShow = getMaxHomesToShow(player);
+        int homesToShow = Math.min(maxHomesToShow, homeManagement.getPlayerHomes(player.getUniqueId()).size());
+
         for (String line : ezHomes.getMessageList("commands.homes.command")) {
             if (line.contains("%player%")) {
                 line = line.replace("%player%", player.getName());
@@ -76,7 +79,8 @@ public class CommandHomes implements CommandExecutor {
             }
             if (line.contains("%homes%")) {
                 Component homesList = Component.empty();
-                for (Component component : homeManagement.getHomesClickable(player.getUniqueId())) {
+                for (int i = 0; i < homesToShow; i++) {
+                    Component component = homeManagement.getHomesClickable(player.getUniqueId()).get(i);
                     homesList = homesList.append(component);
                 }
                 audiences.player(player).sendMessage(homesList);
@@ -93,5 +97,18 @@ public class CommandHomes implements CommandExecutor {
             audiences.player(player).sendMessage(component);
         }
         return true;
+    }
+
+    // Helper method to get the maximum number of homes a player can view based on their permissions
+    private int getMaxHomesToShow(Player player) {
+        if (player.hasPermission("zahomes.max.100")) {
+            return 100;
+        } else if (player.hasPermission("zahomes.max.50")) {
+            return 50;
+        } else if (player.hasPermission("zahomes.max.25")) {
+            return 25;
+        } else {
+            return ezHomes.config.getInt("total-homes"); // Default amount from config
+        }
     }
 }

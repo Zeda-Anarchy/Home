@@ -7,6 +7,7 @@ errors:
   invalid-character: "<red>Invalid character in home name.</red>"
   teleport-canceled: "<red>Teleport canceled!</red>"
   home-already-exists: "<red>That home already exists.</red>"
+  out-of-range: "<red>You are out of range to use this command.</red>"
 
 no-perms: "<red>You don't have permission to use this command.</red>"
 config-reloaded: "<green>Config was reloaded!</green>"

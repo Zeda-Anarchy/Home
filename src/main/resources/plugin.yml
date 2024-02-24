@@ -1,6 +1,6 @@
-name: EzHomes
+name: ZAHome
 version: ${project.version}
-main: lol.hyper.ezhomes.EzHomes
+main: lol.hyper.zdhomes.ZDHomes
 api-version: 1.13
 author: hyperdefined
 website: https://www.spigotmc.org/resources/ezhomes.82663/
@@ -8,59 +8,59 @@ description: A super easy to use homes plugin.
 commands:
   sethome:
     usage: /sethome <name>
-    permission: ezhomes.sethome
+    permission: zahomes.sethome
   home:
     usage: /home <name>
-    permission: ezhomes.home
+    permission: zahomes.home
   homes:
     usage: /homes
-    permission: ezhomes.homes
-  updatehome:
-    usage: /updatehome <home>
-    permission: ezhomes.updatehome
+    permission: zahomes.homes
   delhome:
     usage: /delhome <home>
-    permission: ezhomes.delhome
-  where:
-    usage: /where <home>
-    permission: ezhomes.where
-  respawnhome:
-    usage: /respawnhome <home>
-    permission: ezhomes.respawnhome
-  ezhomes:
-    usage: /ezhomes
-    permission: ezhomes.command
+    permission: zahomes.delhome
+  zdhomes:
+    usage: /zahomes
+    permission: zahomes.command
 permissions:
-  ezhomes.reload:
+  zahomes.reload:
     default: op
     description: Allows the usage of /ezhomes reload.
-  ezhomes.bypasslimit:
+  zahomes.bypasslimit:
     default: op
     description: Allows player to bypass home limit.
-  ezhomes.bypasscooldown:
+  zahomes.bypasscooldown:
     default: op
     description: Allows player to bypass cooldown between teleports.
-  ezhomes.command:
+  zahomes.command:
     default: op
     description: Allows the usage of /ezhomes.
-  ezhomes.sethome:
+  zahomes.sethome:
     default: true
     description: Allows the usage of /sethome.
-  ezhomes.home:
+  zahomes.home:
     default: true
     description: Allows the usage of /home.
-  ezhomes.homes:
+  zahomes.homes:
     default: true
     description: Allows the usage of /homes.
-  ezhomes.updatehome:
+  zahomes.updatehome:
     default: true
     description: Allows the usage of /updatehome.
-  ezhomes.delhome:
+  zahomes.delhome:
     default: true
     description: Allows the usage of /delhome.
-  ezhomes.where:
+  zahomes.where:
     default: true
     description: Allows the usage of /where.
-  ezhomes.respawnhome:
+  zahomes.respawnhome:
     default: true
     description: Allows the usage of /respawnhome.
+  zahomes.max.25:
+    default: false
+    description: Max 25 homes
+  zahomes.max.50:
+    default: false
+    description: Max 50 homes
+  zahomes.max.100:
+    default: false
+    description: Max 100 homes

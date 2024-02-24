@@ -49,7 +49,7 @@ public class CommandHome implements TabExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        if (!sender.hasPermission("ezhomes.home")) {
+        if (!sender.hasPermission("zahomes.home")) {
             audiences.sender(sender).sendMessage(ezHomes.getMessage("no-perms"));
             return true;
         }
@@ -60,6 +60,17 @@ public class CommandHome implements TabExecutor {
         }
 
         Player player = (Player) sender;
+
+        if (ezHomes.config.getBoolean("blocks-out-of-spawn-to-use.enabled")) {
+            int range = ezHomes.config.getInt("blocks-out-of-spawn-to-use.range");
+            int playerX = player.getLocation().getBlockX();
+            int playerZ = player.getLocation().getBlockZ();
+            if (Math.abs(playerX) > range || Math.abs(playerZ) > range) {
+                audiences.player(player).sendMessage(ezHomes.getMessage("commands.home.out-of-range", range));
+                return true;
+            }
+        }
+
         List<String> playerHomes = homeManagement.getPlayerHomes(player.getUniqueId());
         if (playerHomes.isEmpty()) {
             audiences.player(player).sendMessage(ezHomes.getMessage("errors.no-homes"));
@@ -74,7 +85,7 @@ public class CommandHome implements TabExecutor {
             }
             case 1: {
                 String homeName = args[0];
-                if (homeManagement.canPlayerTeleport(player.getUniqueId()) || player.hasPermission("ezhomes.bypasscooldown")) {
+                if (homeManagement.canPlayerTeleport(player.getUniqueId()) || player.hasPermission("zahomes.bypasscooldown")) {
                     if (playerHomes.contains(homeName)) {
                         BukkitTask currentTask = playerMove.teleportTasks.get(player.getUniqueId());
                         if (currentTask != null) {

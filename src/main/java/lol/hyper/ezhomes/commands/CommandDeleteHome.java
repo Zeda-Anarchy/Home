@@ -48,12 +48,23 @@ public class CommandDeleteHome implements TabExecutor {
             return true;
         }
 
-        if (!sender.hasPermission("ezhomes.delhome")) {
+        if (!sender.hasPermission("zahomes.delhome")) {
             audiences.sender(sender).sendMessage(ezHomes.getMessage("no-perms"));
             return true;
         }
 
         Player player = (Player) sender;
+
+        if (ezHomes.config.getBoolean("blocks-out-of-spawn-to-use.enabled")) {
+            int range = ezHomes.config.getInt("blocks-out-of-spawn-to-use.range");
+            int playerX = player.getLocation().getBlockX();
+            int playerZ = player.getLocation().getBlockZ();
+            if (Math.abs(playerX) > range || Math.abs(playerZ) > range) {
+                audiences.player(player).sendMessage(ezHomes.getMessage("commands.delhome.out-of-range", range));
+                return true;
+            }
+        }
+
         List<String> playerHomes = homeManagement.getPlayerHomes(player.getUniqueId());
         if (playerHomes.isEmpty()) {
             audiences.player(player).sendMessage(ezHomes.getMessage("errors.no-homes"));

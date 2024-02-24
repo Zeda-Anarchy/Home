@@ -5,11 +5,11 @@ teleport-cooldown: 100
 seconds-to-teleport: 10
 
 # How many homes a player can have.
-total-homes: 5
+total-homes: 10
 
 # Use a GUI for /homes.
 # Players can click on the homes to teleport, rather than type /home <home>.
-use-homes-gui: true
+use-homes-gui: false
 
 # Allow users to set a home they will respawn at when they die.
 allow-respawn-at-home: true
@@ -19,6 +19,11 @@ play-warp-sound: true
 
 # Use team formatting (team color, prefix and suffix in player placeholder).
 use-team-formatting: false
+
+blocks-out-of-spawn-to-use:
+  enabled: true
+  range: 2000
+# From what block you can use commands
 
 # No touch please :)
 config-version: 4

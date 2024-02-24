@@ -45,7 +45,7 @@ public class CommandSetHome implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        if (!sender.hasPermission("ezhomes.sethome")) {
+        if (!sender.hasPermission("zahomes.sethome")) {
             audiences.sender(sender).sendMessage(ezHomes.getMessage("no-perms"));
             return true;
         }
@@ -57,6 +57,16 @@ public class CommandSetHome implements CommandExecutor {
 
         Player player = (Player) sender;
 
+        if (ezHomes.config.getBoolean("blocks-out-of-spawn-to-use.enabled")) {
+            int range = ezHomes.config.getInt("blocks-out-of-spawn-to-use.range");
+            int playerX = player.getLocation().getBlockX();
+            int playerZ = player.getLocation().getBlockZ();
+            if (Math.abs(playerX) > range || Math.abs(playerZ) > range) {
+                audiences.player(player).sendMessage(ezHomes.getMessage("commands.sethome.out-of-range", range));
+                return true;
+            }
+        }
+
         int argsLength = args.length;
         switch (argsLength) {
             case 0: {
@@ -65,8 +75,8 @@ public class CommandSetHome implements CommandExecutor {
             }
             case 1: {
                 List<String> homes = homeManagement.getPlayerHomes(player.getUniqueId());
-                int homeLimit = ezHomes.config.getInt("total-homes");
-                if (homes.size() >= homeLimit && !player.hasPermission("ezhomes.bypasslimit")) {
+                int homeLimit = getHomeLimit(player);
+                if (homes.size() >= homeLimit && !player.hasPermission("zahomes.bypasslimit")) {
                     audiences.player(player).sendMessage(ezHomes.getMessage("commands.sethome.home-limit", homeLimit));
                     return true;
                 }
@@ -91,5 +101,17 @@ public class CommandSetHome implements CommandExecutor {
             }
         }
         return true;
+    }
+
+    private int getHomeLimit(Player player) {
+        if (player.hasPermission("zahomes.max.100")) {
+            return 100;
+        } else if (player.hasPermission("zahomes.max.50")) {
+            return 50;
+        } else if (player.hasPermission("zahomes.max.25")) {
+            return 25;
+        } else {
+            return ezHomes.config.getInt("total-homes");
+        }
     }
 }
