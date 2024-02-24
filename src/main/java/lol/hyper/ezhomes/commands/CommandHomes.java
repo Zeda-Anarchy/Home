@@ -46,7 +46,7 @@ public class CommandHomes implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        if (!sender.hasPermission("ezhomes.homes")) {
+        if (!sender.hasPermission("zahomes.homes")) {
             audiences.sender(sender).sendMessage(ezHomes.getMessage("no-perms"));
             return true;
         }

@@ -24,7 +24,7 @@ commands:
 permissions:
   zahomes.reload:
     default: op
-    description: Allows the usage of /ezhomes reload.
+    description: Allows the usage of /zahomes reload.
   zahomes.bypasslimit:
     default: op
     description: Allows player to bypass home limit.
@@ -33,7 +33,7 @@ permissions:
     description: Allows player to bypass cooldown between teleports.
   zahomes.command:
     default: op
-    description: Allows the usage of /ezhomes.
+    description: Allows the usage of /zahomes.
   zahomes.sethome:
     default: true
     description: Allows the usage of /sethome.

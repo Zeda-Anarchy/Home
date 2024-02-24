@@ -121,7 +121,7 @@ public final class EzHomes extends JavaPlugin {
         this.getCommand("homes").setExecutor(commandHomes);
         this.getCommand("updatehome").setExecutor(commandUpdateHome);
         this.getCommand("delhome").setExecutor(commandDeleteHome);
-        this.getCommand("ezhomes").setExecutor(commandEzHomes);
+        this.getCommand("zahomes").setExecutor(commandEzHomes);
         this.getCommand("where").setExecutor(commandWhere);
         this.getCommand("respawnhome").setExecutor(commandHomeRespawn);
 
