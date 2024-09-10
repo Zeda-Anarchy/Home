@@ -28,6 +28,7 @@ ZaHomes is a super simple homes plugin. Players can save locations and teleport 
 - Readme changes
 ## Original code
 This is fork of original ezhomes made by hyperdefined
+https://github.com/hyperdefined/EzHomes
 
 ## Distribution Requirements
 When distributing this modified code or any derivative work:
